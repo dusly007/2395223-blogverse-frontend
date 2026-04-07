@@ -35,7 +35,13 @@ export async function login(userCreds: LoginForm) {
 
   } catch (err) {
     if (axios.isAxiosError(err)) {
-      throw err.response?.data
+      if (err.message === "Network Error") {
+        throw {
+          message: "Network error. Please check your connection with the API and try again."
+        }
+      } else {
+        throw err.response?.data || { message: "Unexpected error while login in..." }
+      }
     } else {
       throw {
         message: "Unexpected error while login in..."

@@ -19,8 +19,7 @@ async function loginAction({ request }: ActionFunctionArgs) {
         await login(creds)
         return redirect(pathname)
       } catch (error) {
-        console.error(error)
-        return { ok: false, error: "Invalid email or password" }
+        return { ok: false, error: error.message || "Login failed. Please try again." }
       }
     },
   };
