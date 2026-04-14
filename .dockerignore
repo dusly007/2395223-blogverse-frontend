@@ -1,6 +1,11 @@
-node_modules
-dist
+node_modules/
+dist/
+.env
+.env.example
+.env.local
 .git
 .gitignore
-Dockerfile
-.env
+npm-debug.log*
+coverage/
+.vscode/
+.DS_Store
